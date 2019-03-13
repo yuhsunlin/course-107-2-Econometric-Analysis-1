@@ -55,7 +55,10 @@ data("Journals")
 
 ```{r}
 # if follow usage,
-mutate(Journals,citeprice=price/citations) -> journals
+mutate(
+  Journals,
+  citeprice=price/citations
+  ) -> journals
 # pipe expression,
 Journals %>% 
   mutate(
