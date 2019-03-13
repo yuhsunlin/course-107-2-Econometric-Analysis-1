@@ -1,0 +1,107 @@
+---
+title: "R for OLS"
+author: "姓名"
+date: "3/6/2019"
+output: 
+  html_document: 
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: false
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval=F)
+```
+
+# 參考資料
+
+  * [dplyr minicourse, 陳柏銘](https://bookdown.org/PoMingChen/Dplyr_minicourse/)
+  
+  * R magrittr 套件：在 R 中使用管線（Pipe）處理資料流 - G. T. Wang. (2016). G. T. Wang. Retrieved 5 March 2019, from https://blog.gtwang.org/r/r-pipes-magrittr-package/
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE)
+```
+
+
+# setup
+
+```{r}
+library("AER")
+library("ggplot2")
+library("dplyr")
+library("knitr")
+```
+
+
+# dataframe物件
+
+
+```{r}
+data("Journals")
+```
+
+
+> Journal這個dataframe的結構(structure)是什麼？有幾個變數？每個變數物件的類別(class)又是什麼？
+
+> 找出Journal資料的詳細說明。
+
+
+# 資料處理：產生新變數 dplyr::mutate
+
+```{r ch2-summary, results='hide'}
+
+
+```
+
+# 因果問句
+
+> 期刊的價格(citeprice，平均文獻引用價格)如何影響其圖書館訂閱量(subs)? 
+
+```{r ols-paircorr-r, echo=TRUE}
+
+```
+
+
+```{r ols-paircorr2-r}
+
+```
+
+> 為什麼取log後，兩者的相關度變高？它表示兩個變數變得更不獨立嗎？
+
+# 效應評估
+
+> 單純比較不同「期刊價格」(citeprice)的期刊所獨得的圖書館「訂閱數」(subs)變化並無法反應真正的「期刊價格」效應，原因是「立足點」並不與「期刊價格」獨立。
+
+> 這裡「立足點」指得是什麼？
+
+
+# 進階關連分析
+
+數值變數v.s.數值變數
+
+```{r ols-paircoor3-r, results='hide'}
+
+
+```
+
+> 期刊越重要，其引用次數越高，因此高引用次數的期刊，你認為它在「低價格下的訂閱數」（立足點）會比較高還是低？
+
+> 承上題，單純比較「期刊引用單價」高低間的「訂閱數量」差別，所估算出來的價格效果以絕對值來看會高估、還是低估？為什麼？
+
+# 複迴歸模型
+
+```{r}
+
+
+```
+
+## 模型比較
+
+```{r ols-comp-r, results='hide', warning=FALSE}
+
+```
