@@ -148,8 +148,46 @@ is.na(a)
 a=="NA"
 ```
 
+```{r}
+
+```
+
 ## 模型比較
+
+```{r}
+# traditional
+lm(log(subs)~log(citeprice),data=journals)
+
+#pipe 1
+log(subs)~log(citeprice) %>% lm(data=jourmals)
+
+#pipe 2   
+journals %>% 
+  lm(log(subs)~log(citeprice),data=.) -> model1
+
+journals %>%
+  lm(log(subs)~log(citeprice)+foundingyear,data=.) -> model2
+```
 
 ```{r ols-comp-r, results='hide', warning=FALSE}
 
 ```
+
+```{r}
+library(broom)
+```
+
+```{r}
+#估計係數
+tidy(model1)
+```
+
+```{r}
+augment(model1)
+```
+
+```{r}
+#model診斷
+glance(model1)
+```
+
